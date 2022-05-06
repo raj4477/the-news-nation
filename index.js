@@ -1,7 +1,8 @@
+require("dotenv").config();
 var express = require("express");
 var app = new express();
 var request = require("request");
-var server_port = 4000;
+var server_port = process.PORT|| 3000;
 const my_api_key = require("./api.js");
 var api_url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=" + my_api_key;
 
@@ -9,8 +10,10 @@ var api_url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=" + my_api
 app.listen(server_port, function () {
 
 	console.log("Server started on port : " + server_port);
-	console.log( my_api_key);
 });
+
+const one = process.env.HOME;
+console.log(one);
 
 app.get("/", function (_expReq, expRes) {
 	// var finalResponse;
