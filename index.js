@@ -2,7 +2,7 @@ require("dotenv").config();
 var express = require("express");
 var app = new express();
 var request = require("request");
-var server_port = process.PORT|| 3000;
+var server_port = process.env.PORT|| 80a;
 const my_api_key = require("./api.js");
 var api_url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=" + my_api_key;
 
