@@ -279,7 +279,7 @@ app.get("/", function (_expReq, expRes) {
 			// console.log(data);
 			for (var rec in data) {
 				let title = data[rec].title;
-				if(data[rec].urlToImage!= null){
+				if(data[rec].urlToImage!= null && data[rec].description != null && data[rec].title != null && data[rec].url != null ){
 						finalResponse += `<div class="card">
 
 						<div class="image">
