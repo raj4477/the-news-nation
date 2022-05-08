@@ -591,7 +591,7 @@ app.get("/category/:id", function (req, res) {
 			// console.log(data);
 			for (var rec in data) {
 
-				if(data[rec].urlToImage!= null){
+				if(data[rec].urlToImage!= null && data[rec].description != null && data[rec].title != null && data[rec].url != null ){
 					finalResponse += `<div class="card">
 
 				<div class="image">
@@ -888,7 +888,7 @@ app.get("/search/:id",function (req, res){
 				data = data.articles;
 				for (var rec in data) {
 
-					if(data[rec].urlToImage!= null){
+					if(data[rec].urlToImage!= null && data[rec].description != null && data[rec].title != null && data[rec].url != null ){
 						finalResponse += `<div class="card">
 	
 					<div class="image">
