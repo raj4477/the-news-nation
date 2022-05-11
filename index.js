@@ -2,18 +2,22 @@ require("dotenv").config();
 var express = require("express");
 var app = new express();
 var request = require("request");
+const path = require('path');
+
 var server_port = process.env.PORT|| 80;
 const my_api_key = require("./api.js");
 var api_url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=" + my_api_key;
 
 
 app.listen(server_port, function () {
-
 	console.log("Server started on port : " + server_port);
 });
 
-const one = process.env.HOME;
-console.log(one);
+//Static Files for the site 
+app.use(express.static(__dirname+'/public'));
+
+// const one = process.env.HOME;
+console.log(__dirname);
 
 app.get("/", function (_expReq, expRes) {
 	// var finalResponse;
@@ -34,8 +38,7 @@ app.get("/", function (_expReq, expRes) {
 				<meta charset="UTF-8">
 				<meta http-equiv="X-UA-Compatible" content="IE=edge">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<title>The network of news</title>
-				<link rel="stylesheet" href="styles.css">
+				<title>The News Nation</title>
 				<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
 					integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA=="
@@ -231,7 +234,7 @@ app.get("/", function (_expReq, expRes) {
 						
 			<body>
 				<header>
-					<h1>The Network Of news</h1>
+					<h1>The News Nation</h1>
 					<section>
 						<link rel="stylesheet"
 							href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -359,7 +362,7 @@ app.get("/category/:id", function (req, res) {
 				<meta charset="UTF-8">
 				<meta http-equiv="X-UA-Compatible" content="IE=edge">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<title>The network of news</title>
+				<title>The News Nation</title>
 				<link rel="stylesheet" href="styles.css">
 				<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
@@ -549,7 +552,7 @@ app.get("/category/:id", function (req, res) {
 			
 			<body>
 				<header>
-					<h1>The Network Of news</h1>
+					<h1>The News Nation</h1>
 					<section>
 						<link rel="stylesheet"
 							href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -671,7 +674,7 @@ app.get("/search/:id",function (req, res){
 				<meta charset="UTF-8">
 				<meta http-equiv="X-UA-Compatible" content="IE=edge">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<title>The network of news</title>
+				<title>The News Nation</title>
 				<link rel="stylesheet" href="styles.css">
 				<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
@@ -859,7 +862,7 @@ app.get("/search/:id",function (req, res){
 			
 			<body>
 				<header>
-					<h1 id = "heading" >The Network Of news</h1>
+					<h1 id = "heading" >The News Nation</h1>
 					<section>
 						<link rel="stylesheet"
 							href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -929,4 +932,10 @@ app.get("/search/:id",function (req, res){
 		</html>`;
 			res.send(finalResponse);
 		});
+});
+
+//about page end-point
+
+app.get("/about",function (req,res){
+	res.sendFile(path.join(__dirname+"/views/about_page.html"));
 });
