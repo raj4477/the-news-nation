@@ -139,11 +139,8 @@ app.get("/", function (_expReq, expRes) {
 					{
 						width: 105px;
 						height: 5px;
-						
 						text-decoration: none;
 						color: #fff;
-						
-						
 						right: auto;
 						display: grid;
 						place-items: center;
@@ -153,15 +150,16 @@ app.get("/", function (_expReq, expRes) {
 						width: 225px;
 						padding: 15px;
 					}
+
 					.main{
-						
+						display: grid;
+						gap: 30px;
+						grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
 						margin: 2%;
 					}
 					
 					.card{
-						height : 10%;
-						width: 20%;
-						display: inline-block;
+						
 						box-shadow: 2px 2px 20px black;
 						border-radius: 5px; 
 						margin: 2%;
@@ -222,10 +220,9 @@ app.get("/", function (_expReq, expRes) {
 							border-radius: 5px;
 							padding: 10px;
 						}
-						@media screen and (max-width: 650px) {
-							.card {
-							  width: 100%;
-							  display: block;
+						@media screen and (max-width: 645px) {
+							.menu-bar{
+								display:none;
 							}
 						  }
 						</style>					  
