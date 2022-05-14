@@ -10,14 +10,15 @@ var api_url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=" + my_api
 
 
 app.listen(server_port, function () {
-	console.log("Server started on port : " + server_port);
+	console.log("Server started on port : " + server_port) ; 
+	console.log("http://localhost:"+server_port ) ; 
 });
 
 //Static Files for the site 
 app.use(express.static(__dirname+'/public'));
 
 // const one = process.env.HOME;
-console.log(__dirname);
+// console.log(__dirname);
 
 app.get("/", function (_expReq, expRes) {
 	// var finalResponse;
@@ -43,199 +44,15 @@ app.get("/", function (_expReq, expRes) {
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
 					integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA=="
 					crossorigin="anonymous" referrerpolicy="no-referrer" />
-					<style>* {
-						padding: 0;
-						margin: 0;
-						box-sizing: border-box;
-					  
-					}
-					
-					body {
-						background-size: cover;
-						background-position: center;
-						font-family: sans-serif;
-						
-					}
-					
-					
-					.menu-bar {
-						background: rgb(0, 100, 0);
-						text-align: center;
-						
-					}
-					
-					.menu-bar ul {
-						display: inline-flex;
-						list-style: none;
-						color: #fff;
-					}
-					
-					.menu-bar ul li
-					{
-						width: 120px;
-						margin: 15px;
-						padding: 15px;
-					}
-					
-					.menu-bar ul li a
-					{
-						text-decoration: none;
-						color: #fff;
-					}
-					.active, .menu-bar ul li:hover
-					{
-						background: #2bab0d;
-						border-radius: 3px;
-					}
-					.menu-bar .fa
-					{
-						margin-right: 8px;
-					}
-					.sub-menu-1
-					{
-						display: none;
-						z-index: 9999;
-					}
-					.menu-bar ul li:hover .sub-menu-1
-					{
-						display: block;
-						position: absolute;
-						background: rgb(0, 100, 0);
-						margin-top: 15px;
-						margin-left: 15px;
-					}
-					.menu-bar ul li:hover .sub-menu-1 ul
-					{
-						display: block;
-						margin: 10px;
-					}
-					.menu-bar ul li:hover .sub-menu-1 ul li
-					{
-					  width: 150px;
-					  padding: 10px;
-					  border-radius: 0;
-					  text-align: left;
-					  }
-					  .searchBox
-					  {
-						  position: relative;
-						  display: flex;
-						  justify-content: center;
-						  align-items: center;
-						  text-decoration: none;
-						  
-						}
-						.searchText
-						{
-						width: 0px;
-						padding: 0px;
-						border-radius: 25px;
-						border: none;
-						outline: none;
-						transition: all 0.2s linear;
-						
-					}
-					.searchBtn
-					{
-						width: 105px;
-						height: 5px;
-						text-decoration: none;
-						color: #fff;
-						right: auto;
-						display: grid;
-						place-items: center;
-					}
-					.searchBox:hover > .searchText
-					{
-						width: 225px;
-						padding: 15px;
-					}
-
-					.main{
-						display: grid;
-						gap: 30px;
-						grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
-						margin: 2%;
-					}
-					
-					.card{
-						
-						box-shadow: 2px 2px 20px black;
-						border-radius: 5px; 
-						margin: 2%;
-						overflow : hidden;
-					}
-					
-					.image img{
-						width: 100%;
-						height: 250px;
-						border-top-right-radius: 5px;
-						border-top-left-radius: 5px;
-						
-						
-						
-					}
-					
-					.title{
-						
-						text-align: center;
-						padding: 10px;
-						
-					}
-					
-					h1{
-						font-size: 20px;
-					}
-					
-					.des{
-						padding: 3px;
-						text-align: center;
-						
-						padding-top: 10px;
-						border-bottom-right-radius: 5px;
-						border-bottom-left-radius: 5px;
-					}
-					button{
-						margin-top: 40px;
-						margin-bottom: 10px;
-						background-color: white;
-						border: 1px solid black;
-						border-radius: 5px;
-						padding:10px;
-					   }
-					   button:hover{
-						 background-color: black;
-						 color: white;
-						 transition: .5s;
-						 cursor: pointer;
-						}
-						
-						.searchBox i { color: rgb(0 100 0); padding: 0px 8px; }
-						#searchBtn {
-							margin-top: 5%;
-							margin-left: 10px;
-							margin-bottom: 5%;
-							background-color: white;
-							border: 1px solid black;
-							border-radius: 5px;
-							padding: 10px;
-						}
-						@media screen and (max-width: 645px) {
-							.menu-bar{
-								display:none;
-							}
-						  }
-						</style>					  
-						
+					<link rel="stylesheet" href="/style.css">			  
 						</head>
-						
 			<body>
 				<header>
-					<h1>The News Nation</h1>
-					<section>
-						<link rel="stylesheet"
-							href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-						<div class="menu-bar">
+				<section>
+				<link rel="stylesheet"
+				href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+				<div class="menu-bar">
+				<h1 id="news">The News Nation</h1>
 							<ul>
 								<li class="active"><i class="fa fa-home"></i>Home</li>
 								<li><i class="fa thin fa-newspaper"></i>category
@@ -259,7 +76,7 @@ app.get("/", function (_expReq, expRes) {
 									<li><button id="searchBtn" onclick="onClicked()"><i class="fas fa-search"></i>search</button></li>
 									 </div>
 								<li><a href="#"><i class="fa fa-phone"></i>contact</a></li>
-								<li><a href="#"><i class="fa fa-user"></i>About</a></li>
+								<li><a href="/about"><i class="fa fa-user"></i>About</a></li>
 							</ul>
 			
 			
@@ -267,21 +84,23 @@ app.get("/", function (_expReq, expRes) {
 			
 					</header>
 			
-					<section style = "z-index=-9999 " >
+					<section  id ="marq"style = "z-index:-9999;margin-top: 125px; " >
 						<marquee>
 							<img src="https://5.imimg.com/data5/DR/NW/MY-45108437/newspaper-advertisement-all-india-500x500.jpg"
-								alt=" Image" style="height:300px;"><br>
+								alt=" Image" style="height:300px;">
+								<h1 style="font-size:30px">Breaking News</h1><br>
 						</marquee>
 					</section>
 				<div class="main">`;
 
 			data = data.articles;
-			// console.log(data);
 			for (var rec in data) {
-				let title = data[rec].title;
 				if(data[rec].urlToImage!= null && data[rec].description != null && data[rec].title != null && data[rec].url != null ){
 						finalResponse += `<div class="card">
-
+						<div class="card-heading">
+						<h1>
+						${data[rec].source.name ?? "Unknown"}</h1>
+					</div>
 						<div class="image">
 							<img
 								src="${data[rec].urlToImage} " >
@@ -302,7 +121,7 @@ app.get("/", function (_expReq, expRes) {
 
 			finalResponse += ` </div>
 			<footer>
-				<div class="left">
+				<div class="bottom">
 					<p>
 						Copyright policy</p>
 					<p>
@@ -316,25 +135,7 @@ app.get("/", function (_expReq, expRes) {
 		
 			</footer>
 		</body>
-		<script>
-function onClicked() {
-  var text = document.getElementsByClassName("searchText")[0].value;
-  if(text===""){
-	  alert("Search Text is Empty");
-	}
-	else{ window.location.href = '/search/'+text;}
-}
-const input = document.querySelector(".searchText");
-input.addEventListener("keyup", (event) => {
-	var text = document.getElementsByClassName("searchText")[0].value;
-	if (event.key === "Enter") {
-		if(text===""){
-			alert("Search Text is Empty");
-		  }
-		  else{ window.location.href = '/search/'+text;} 
-	}
-  });
-</script>
+		<script src="/script.js"></script>
 		</html>`;
 			expRes.send(finalResponse);
 		});
@@ -365,198 +166,20 @@ app.get("/category/:id", function (req, res) {
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
 					integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA=="
 					crossorigin="anonymous" referrerpolicy="no-referrer" />
-					<style>* {
-						padding: 0;
-						margin: 0;
-						box-sizing: border-box;
-					  
-					  }
-					  
-					  body {
-						background-size: cover;
-						background-position: center;
-						font-family: sans-serif;
-					  
-					  }
-					  
-					  .menu-bar {
-						background: rgb(0, 100, 0);
-						text-align: center;
-					  
-					  }
-					  
-					  .menu-bar ul {
-						display: inline-flex;
-						list-style: none;
-						color: #fff;
-					  }
-					  
-					  .menu-bar ul li
-					  {
-						width: 120px;
-						margin: 15px;
-						padding: 15px;
-					  }
-					  
-					  .menu-bar ul li a
-					  {
-						text-decoration: none;
-						color: #fff;
-					  }
-					  #active , .menu-bar ul li:hover
-					  {
-					  background: #2bab0d;
-					  border-radius: 3px;
-					  }
-					  .menu-bar .fa
-					  {
-					  margin-right: 8px;
-					  }
-					  .sub-menu-1
-					  {
-						display: none;
-					  }
-					  .menu-bar ul li:hover .sub-menu-1
-					  {
-						display: block;
-						position: absolute;
-						background: rgb(0, 100, 0);
-						margin-top: 15px;
-						margin-left: 15px;
-					  }
-					  .menu-bar ul li:hover .sub-menu-1 ul
-					  {
-					  display: block;
-					  margin: 10px;
-					  }
-					  .menu-bar ul li:hover .sub-menu-1 ul li
-					  {
-					  width: 150px;
-					  padding: 10px;
-					  border-radius: 0;
-					  text-align: left;
-					  }
-					  .searchBox
-					  {
-						position: relative;
-						display: flex;
-						justify-content: center;
-						align-items: center;
-						text-decoration: none;
-						
-					  }
-					  .searchText
-					  {
-						width: 0px;
-						padding: 0px;
-						border-radius: 25px;
-						border: none;
-						outline: none;
-						transition: all 0.2s linear;
-						
-					  }
-					  .searchBtn
-					  {
-						width: 105px;
-						height: 5px;
-						
-						text-decoration: none;
-						color: #fff;
-					   
-						
-						right: auto;
-						display: grid;
-						place-items: center;
-					  }
-					  .searchBox:hover > .searchText
-					  {
-					  width: 225px;
-					  padding: 15px;
-					  }
-					  .main{
-					  
-						margin: 2%;
-					   }
-					   
-					   .card{
-						   height : 470px;
-							width: 20%;
-							display: inline-block;
-							box-shadow: 2px 2px 20px black;
-							border-radius: 5px; 
-							margin: 2%;
-							overflow : hidden;
-						   }
-					   
-					   .image img{
-						 width: 100%;
-						 border-top-right-radius: 5px;
-						 border-top-left-radius: 5px;
-						 
-					   
-						
-						}
-					   
-					   .title{
-						
-						 text-align: center;
-						 padding: 10px;
-						 
-						}
-					   
-					   h1{
-						 font-size: 20px;
-						}
-					   
-					   .des{
-						 padding: 3px;
-						 text-align: center;
-						 padding-top: 10px;
-						 border-bottom-right-radius: 5px;
-						 border-bottom-left-radius: 5px;
-					   }
-					   button{
-						 margin-top: 40px;
-						 margin-bottom: 10px;
-						 background-color: white;
-						 border: 1px solid black;
-						 border-radius: 5px;
-						 padding:10px;
-					   }
-					   button:hover{
-						 background-color: black;
-						 color: white;
-						 transition: .5s;
-						 cursor: pointer;
-					   }
-					  .searchBox i{
-						color: white;
-						padding: 0px 8px;
-					  }
-					  .searchBox i { color: rgb(0 100 0); padding: 0px 8px; }
-						#searchBtn {
-							margin-top: 5%;
-							margin-left: 10px;
-							margin-bottom: 5%;
-							background-color: white;
-							border: 1px solid black;
-							border-radius: 5px;
-							padding: 10px;
-						}
-                    </style>					  
+					<link rel="stylesheet" href="/style.css">	z						  
 				
 			</head>
 			
 			<body>
 				<header>
-					<h1>The News Nation</h1>
 					<section>
 						<link rel="stylesheet"
 							href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-						<div class="menu-bar">
+							<div class="menu-bar">
+							<h1 id="news">The News Nation</h1>
 							<ul>
 								<li ><a href="/"><i class="fa fa-home"></i>Home</a></li>
-								<li><i id = "active" class="fa thin fa-newspaper"></i>category
+								<li class="active"><i class="fa thin fa-newspaper"></i>category
 									<div class="sub-menu-1">
 										<ul>
 										<li><a href="/category/general">General</a></li>
@@ -574,7 +197,7 @@ app.get("/category/:id", function (req, res) {
 									<li><button id= "searchBtn" onclick="onClicked()"><i class="fas fa-search"></i>search</button></li> 
 									</div>
 								<li><a href="#"><i class="fa fa-phone"></i>contact</a></li>
-								<li><a href="#"><i class="fa fa-user"></i>About</a></li>
+								<li><a href="/about"><i class="fa fa-user"></i>About</a></li>
 							</ul>
 			
 			
@@ -588,12 +211,14 @@ app.get("/category/:id", function (req, res) {
 				<div class="main">`;
 
 			data = data.articles;
-			// console.log(data);
 			for (var rec in data) {
 
 				if(data[rec].urlToImage!= null && data[rec].description != null && data[rec].title != null && data[rec].url != null ){
 					finalResponse += `<div class="card">
-
+					<div class="card-heading">
+						<h1>
+						${data[rec].source.name ?? "Unknown"}</h1>
+					</div>
 				<div class="image">
 					<img
 						src="${data[rec].urlToImage}" >
@@ -613,7 +238,7 @@ app.get("/category/:id", function (req, res) {
 
 			finalResponse += ` </div>
 			<footer>
-				<div class="left">
+				<div class="bottom">
 					<p>
 						Copyright policy</p>
 					<p>
@@ -627,25 +252,7 @@ app.get("/category/:id", function (req, res) {
 		
 			</footer>
 		</body>
-		<script>
-function onClicked() {
-  var text = document.getElementsByClassName("searchText")[0].value;
-  if(text===""){
-	alert("Search Text is Empty");
-  }
- else{ window.location.href = '/search/'+text;}
-}
-const input = document.querySelector(".searchText");
-input.addEventListener("keyup", (event) => {
-	var text = document.getElementsByClassName("searchText")[0].value;
-	if (event.key === "Enter") {
-		if(text===""){
-			alert("Search Text is Empty");
-		  }
-		  else{ window.location.href = '/search/'+text;} 
-	}
-  });
-</script>
+		<script src="/script.js"></script>
 		</html>`;
 		// let text =document.getElementsByClassName('searchText').value
 			res.send(finalResponse);
@@ -677,183 +284,7 @@ app.get("/search/:id",function (req, res){
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
 					integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA=="
 					crossorigin="anonymous" referrerpolicy="no-referrer" />
-					<style>* {
-						padding: 0;
-						margin: 0;
-						box-sizing: border-box;
-					  
-					  }
-					  
-					  body {
-						background-size: cover;
-						background-position: center;
-						font-family: sans-serif;
-					  
-					  }
-					  
-					  .menu-bar {
-						background: rgb(0, 100, 0);
-						text-align: center;
-					  
-					  }
-					  
-					  .menu-bar ul {
-						display: inline-flex;
-						list-style: none;
-						color: #fff;
-					  }
-					  
-					  .menu-bar ul li
-					  {
-						width: 120px;
-						margin: 15px;
-						padding: 15px;
-					  }
-					  
-					  .menu-bar ul li a
-					  {
-						text-decoration: none;
-						color: #fff;
-					  }
-					  .active, .menu-bar ul li:hover
-					  {
-					  background: #2bab0d;
-					  border-radius: 3px;
-					  }
-					  .menu-bar .fa
-					  {
-					  margin-right: 8px;
-					  }
-					  .sub-menu-1
-					  {
-						display: none;
-					  }
-					  .menu-bar ul li:hover .sub-menu-1
-					  {
-						display: block;
-						position: absolute;
-						background: rgb(0, 100, 0);
-						margin-top: 15px;
-						margin-left: 15px;
-					  }
-					  .menu-bar ul li:hover .sub-menu-1 ul
-					  {
-					  display: block;
-					  margin: 10px;
-					  }
-					  .menu-bar ul li:hover .sub-menu-1 ul li
-					  {
-					  width: 150px;
-					  padding: 10px;
-					  border-radius: 0;
-					  text-align: left;
-					  }
-					  .searchBox
-					  {
-						position: relative;
-						display: flex;
-						justify-content: center;
-						align-items: center;
-						text-decoration: none;
-						
-					  }
-					  .searchText
-					  {
-						width: 0px;
-						padding: 0px;
-						border-radius: 25px;
-						border: none;
-						outline: none;
-						transition: all 0.2s linear;
-						
-					  }
-					  .searchBtn
-					  {
-						width: 105px;
-						height: 5px;
-						
-						text-decoration: none;
-						color: #fff;
-					   
-						
-						right: auto;
-						display: grid;
-						place-items: center;
-					  }
-					  .searchBox:hover > .searchText
-					  {
-					  width: 225px;
-					  padding: 15px;
-					  }
-					  .main{
-					  
-						margin: 2%;
-					   }
-					   
-					   .card{
-						   height : 470px;
-							width: 20%;
-							display: inline-block;
-							box-shadow: 2px 2px 20px black;
-							border-radius: 5px; 
-							margin: 2%;
-							overflow : hidden;
-						   }
-					   
-					   .image img{
-						 width: 100%;
-						 border-top-right-radius: 5px;
-						 border-top-left-radius: 5px;
-						 
-					   
-						
-						}
-					   
-					   .title{
-						
-						 text-align: center;
-						 padding: 10px;
-						 
-						}
-					   
-					   h1{
-						 font-size: 20px;
-						}
-					   
-					   .des{
-						 padding: 3px;
-						 text-align: center;
-						
-						 padding-top: 10px;
-							   border-bottom-right-radius: 5px;
-						 border-bottom-left-radius: 5px;
-					   }
-					   button{
-						 margin-top: 40px;
-						 margin-bottom: 10px;
-						 background-color: white;
-						 border: 1px solid black;
-						 border-radius: 5px;
-						 padding:10px;
-					   }
-					   button:hover{
-						 background-color: black;
-						 color: white;
-						 transition: .5s;
-						 cursor: pointer;
-					   }
-					  .searchBox i{
-						color: white;
-						padding: 0px 8px;
-					  }
-					   #heading{
-						font-family: arial, sans-serif;
-						font-size: 30px;
-						font-weight: bold;
-						margin-top: 0px;
-						margin-bottom: 1px;
-					   }
-</style>					  
+					<link rel="stylesheet" href="/style.css">						  
 				
 			</head>
 			
@@ -867,7 +298,7 @@ app.get("/search/:id",function (req, res){
 							<ul>
 								<li class="active"><a href="/"><i class="fa fa-home"></i>Home</a></li>
 								<li><a href="#"><i class="fa fa-phone"></i>contact</a></li>
-								<li><a href="#"><i class="fa fa-user"></i>About</a></li>
+								<li><a href="/about"><i class="fa fa-user"></i>About</a></li>
 							</ul>
 			
 			
@@ -877,21 +308,23 @@ app.get("/search/:id",function (req, res){
 					<section>
 						
 					</section>
-				</header>
-				<div class="main">`;
-
-				// console.log(data);
+				</header>`;
 				if(data.totalResults== 0){
-					finalResponse += `<h1> No Results Found For ${req.params.id} </h1>`;
+					finalResponse += `<div id="notFound"><h1> No Results Found For <p style="color: rgb(0,100,0);font-size:26px">${req.params.id}</p></h1></div>`;
 				}
 				else{
 				data = data.articles;
+				finalResponse += `<div class="main">`;
 				for (var rec in data) {
 
 					if(data[rec].urlToImage!= null && data[rec].description != null && data[rec].title != null && data[rec].url != null ){
 						finalResponse += `<div class="card">
 	
 					<div class="image">
+					<div class="card-heading">
+						<h1>
+						${data[rec].source.name ?? "Unknown"}</h1>
+					</div>
 						<img
 							src="${data[rec].urlToImage}" >
 					</div>
@@ -911,7 +344,7 @@ app.get("/search/:id",function (req, res){
 
 			finalResponse += ` </div>
 			<footer>
-				<div class="left">
+				<div class="bottom">
 					<p>
 						Copyright policy</p>
 					<p>
@@ -931,7 +364,7 @@ app.get("/search/:id",function (req, res){
 		});
 });
 
-//about page end-point
+/// about page [end-point]
 
 app.get("/about",function (req,res){
 	res.sendFile(path.join(__dirname+"/views/about_page.html"));
