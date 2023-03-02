@@ -91,9 +91,11 @@ https.get(api_url).then(res => {
             <div class="main">`;
             
             data = data.articles;
-            // console.log(data);
+            console.log(data);
+	          console.log("====================");
         for (var rec in data) {
             console.log(rec);
+		console.log("=========***************************===========");
             if(data[rec].urlToImage!= null && data[rec].title != null && data[rec].url != null ){
                     finalResponse += `<div class="card">
                     <div class="card-heading">
