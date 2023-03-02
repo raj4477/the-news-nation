@@ -216,7 +216,10 @@ app.get("/category/:id", function (req, expRes) {
 
 			for (var rec in data) {
 
-				if(data[rec].urlToImage!= null && data[rec].title != null && data[rec].url != null ){
+				if(data[rec].title != null && data[rec].url != null ){
+					 if(data[rec].description == null ){
+			    data[rec].description ="No Description Available "
+		    }
 					finalResponse += `<div class="card">
 					<div class="card-heading">
 						<h1>
@@ -224,7 +227,7 @@ app.get("/category/:id", function (req, expRes) {
 					</div>
 				<div class="image">
 					<img
-						src="${data[rec].urlToImage}" >
+						src="${data[rec].urlToImage ?? "/picture-not-available-clipart-12.jpg"}" >
 				</div>
 				<div class="title">
 					<h1>
@@ -319,7 +322,10 @@ app.get("/search/:id",function (req, expRes){
 		 finalResponse += `<div class="main">`;
 		 for (var rec in data) {
 
-			 if(data[rec].urlToImage!= null && data[rec].title != null && data[rec].url != null ){
+			 if(data[rec].title != null && data[rec].url != null ){
+				  if(data[rec].description == null ){
+			    data[rec].description ="No Description Available "
+		    }
 				 finalResponse += `<div class="card">
 
 			 <div class="image">
@@ -328,7 +334,7 @@ app.get("/search/:id",function (req, expRes){
 				 ${data[rec].source.name ?? "Unknown"}</h1>
 			 </div>
 				 <img
-					 src="${data[rec].urlToImage}" >
+					 src="${data[rec].urlToImage ?? "/picture-not-available-clipart-12.jpg"}" >
 			 </div>
 			 <div class="title">
 				 <h1>
