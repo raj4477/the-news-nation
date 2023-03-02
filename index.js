@@ -97,6 +97,10 @@ https.get(api_url).then(res => {
             console.log(rec);
 		console.log("=========***************************===========");
             if( data[rec].title != null && data[rec].url != null ){
+		    if(data[rec].description == null ){
+			    data[rec].description ="No Description Available "
+		    }
+			    
                     finalResponse += `<div class="card">
                     <div class="card-heading">
                     <h1>
