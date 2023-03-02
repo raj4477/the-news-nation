@@ -96,7 +96,7 @@ https.get(api_url).then(res => {
         for (var rec in data) {
             console.log(rec);
 		console.log("=========***************************===========");
-            if(data[rec].urlToImage!= null && data[rec].title != null && data[rec].url != null ){
+            if( data[rec].title != null && data[rec].url != null ){
                     finalResponse += `<div class="card">
                     <div class="card-heading">
                     <h1>
@@ -104,7 +104,7 @@ https.get(api_url).then(res => {
                 </div>
                     <div class="image">
                         <img
-                            src="${data[rec].urlToImage} " >
+                            src="${data[rec].urlToImage ?? "/picture-not-available-clipart-12.jpg"} " >
                     </div>
                     <div class="title">
                         <h1>
