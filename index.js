@@ -94,7 +94,7 @@ https.get(api_url).then(res => {
             // console.log(data);
         for (var rec in data) {
             // console.log(rec);
-            if(data[rec].urlToImage!= null && data[rec].description != null && data[rec].title != null && data[rec].url != null ){
+            if(data[rec].urlToImage!= null && data[rec].title != null && data[rec].url != null ){
                     finalResponse += `<div class="card">
                     <div class="card-heading">
                     <h1>
@@ -210,7 +210,7 @@ app.get("/category/:id", function (req, expRes) {
 
 			for (var rec in data) {
 
-				if(data[rec].urlToImage!= null && data[rec].description != null && data[rec].title != null && data[rec].url != null ){
+				if(data[rec].urlToImage!= null && data[rec].title != null && data[rec].url != null ){
 					finalResponse += `<div class="card">
 					<div class="card-heading">
 						<h1>
@@ -313,7 +313,7 @@ app.get("/search/:id",function (req, expRes){
 		 finalResponse += `<div class="main">`;
 		 for (var rec in data) {
 
-			 if(data[rec].urlToImage!= null && data[rec].description != null && data[rec].title != null && data[rec].url != null ){
+			 if(data[rec].urlToImage!= null && data[rec].title != null && data[rec].url != null ){
 				 finalResponse += `<div class="card">
 
 			 <div class="image">
@@ -366,5 +366,5 @@ app.get("/search/:id",function (req, expRes){
 /// about page [end-point]
 
 app.get("/about",function (req,res){
-	res.sendFile(path.join(__dirname+"/views/about_page.html"));
+// 	res.sendFile(path.join(__dirname+"/views/about_page.html"));
 });
